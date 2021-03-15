@@ -98,7 +98,7 @@ module.exports = {};
 module.exports = 'test-file-stub';
 ```
 
-1. Finally, add the following to `package.json` file
+6. Finally, add the following to `package.json` file
 
 ```json
 {
@@ -221,9 +221,23 @@ describe("CustomButton:", () => {
 
 `data-testid` attributes do not resemble how your software is used.
 
+## 4. Running Tests
+
+Run all test files using the following command:
+
+```bash
+npm run test
+```
+
+To run Jest in watch mode, use:
+
+```bash
+npm run jest --watchAll
+```
+
 ---
 
-## 4. Advanced Concepts
+## 5. Advanced Concepts
 ### Snapshot Testing
 
 Makes sure that the user interface does not change unexpectedly
@@ -235,6 +249,10 @@ Refer to the [guide on Snapshot Testing](Snapshot-Testing.md) to learn more.
 Refer to the [guide on Mocks](Mocks.md) to learn more.
 
 ### Firing Events (Simulations)
+
+
+
+### Test Coverage
 
 
 ---
