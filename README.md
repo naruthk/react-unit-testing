@@ -46,7 +46,7 @@ npm install --save-dev identity-obj-proxy
 import "@testing-library/jest-dom/extend-expect";
 ```
 
-2. Create a file called `.babelrc` at the project root. [next/babel](https://nextjs.org/docs/advanced-features/customizing-babel-config) helps compile React applications and server-side code
+2. Create a file called `.babelrc` at the project root. [next/babel](https://nextjs.org/docs/advanced-features/customizing-babel-config) helps compile React applications and server-side code.
 
 ```json
 {
@@ -255,4 +255,4 @@ Refer to the [guide on Test Coverage](Test-Coverage.md) to learn more.
 
 ## 6. Tips and Tricks
 
-Visit the [Tips and Tricks section](./Tips-Tricks.md) for more detail
+Visit the [Tips and Tricks section](Tips-Tricks.md) for more detail.
