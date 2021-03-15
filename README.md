@@ -179,7 +179,7 @@ export default CustomButton;
 
 **Here's how an example test file `CustomButton.test.js` might be written as:**
 
-```javascript
+```jsx
 import { render } from "@testing-library/react";
 import React from "react";
 
