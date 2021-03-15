@@ -28,7 +28,7 @@ npm run test:coverage
 
 After the generating the document via `jest --collectCoverage`, open up `index.html` in your browser. The coverage report should be located in the `./coverage/lcov-report/` folder by default.
 
-![Coverage Report](images/coverage-report.png)
+![Coverage Report](../images/coverage-report.png)
 
 | Types | Definition |
 | ----- | ---------- |
