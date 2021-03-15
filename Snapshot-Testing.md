@@ -18,9 +18,8 @@ This is the general use case for snapshot testing.
 ```javascript
 describe('Rendering:', () => {
  it('should render the component with default props', () => {
-  expect(tree).toMatchSnapshot();
     const { container } = render(
-      <Link page="http://www.facebook.com">Facebook</Link>
+      <Link page="http://www.apple.com">Apple</Link>
     );
     expect(container).toMatchSnapshot();
  });
@@ -33,7 +32,7 @@ describe('Rendering:', () => {
 exports[`Link renders correctly 1`] = `
 <a
   className="normal"
-  href="http://www.facebook.com"
+  href="http://www.apple.com"
   onMouseEnter={[Function bound _onMouseEnter]}
   onMouseLeave={[Function bound _onMouseLeave]}>
   Facebook
