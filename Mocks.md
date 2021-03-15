@@ -5,6 +5,8 @@ Mock functions allows you to
 - make sure that every time the mocked function is called, it will **always return the expected mock value**
 - erases the actual behavior of objects/modules/libraries to make it easier to test our applications
 
+---
+
 ## Various Types of Mocking
 
 ### 1. [Mock Functions](https://jestjs.io/docs/mock-functions)
@@ -50,7 +52,7 @@ export { getListing };
 **Then for our test, we can do the following:**
 
 ```javascript
-// users.test.js
+// channels.test.js
 import axios from 'axios';
 import { getListing } from "./channels.js";
 
@@ -67,29 +69,52 @@ test('should fetch channels', () => {
 });
 ```
 
-**We can also mock a `Promise.reject()`** to test for error cases.
+**We can also mock a `Promise.reject()`** to test for error cases. This can be very helpful if you want to make sure that the Error UI is rendered as expected.
 
 ```javascript
 test('should fetch channels', () => {
   ...
-    // https://jestjs.io/docs/mock-function-api#mockfnmockimplementationfn
-  axios.get.mockImplementation(() => Promise.reject({
+  const response = {
     status: "ERROR",
     statusCode: 401
-  }));
+  };
 
-  expect(getListing).then(data => expect(data).toEqual(channels));
+    // https://jestjs.io/docs/mock-function-api#mockfnmockimplementationfn
+  axios.get.mockImplementation(() => Promise.reject(response));
+
+  expect(getListing).then(data => expect(data).toEqual(response));
   ...
 });
 ```
 
 ### Mock Methods via `jest.spyOn()`
 
+[`jest.spyOn`](https://jestjs.io/docs/jest-object): This creates a mock function just like `jest.fn` but it also tracks the function's methods.
 
+```javascript
+const myObject = {
+  doSomething() {
+    console.log("Hello");
+  }
+};
+
+test("spyOn", () => {
+  const functionBeingSpyOn = jest.spyOn(myObject, "doSomething");
+  myObject.doSomething();
+  
+  expect(functionBeingSpyOn).toBeCalled();
+});
+```
 
 ---
 
-Resources:
+## Additional Readings
+
+- [Mocking is a code smell](https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a) by Eric Elliott
+
+---
+
+**Sources:**
 
 - https://jestjs.io/docs/mock-functions
 - https://jestjs.io/docs/manual-mocks
