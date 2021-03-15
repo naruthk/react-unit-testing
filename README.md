@@ -5,6 +5,7 @@
 - Provides **test **coverage****
 - Comes with a command-line-interface
 - Can mock functions and methods
+- Runs in a Node.js environment (not in the browser)
 
 [React Testing Library](https://testing-library.com/docs/) is a library for testing React applications.
 
@@ -240,25 +241,18 @@ npm run jest --watchAll
 ## 5. Advanced Concepts
 ### Snapshot Testing
 
-Makes sure that the user interface does not change unexpectedly
-
 Refer to the [guide on Snapshot Testing](Snapshot-Testing.md) to learn more.
 
 ### Mocking
 
 Refer to the [guide on Mocks](Mocks.md) to learn more.
 
-### Firing Events (Simulations)
-
-
-
 ### Test Coverage
 
+Refer to the [guide on Test Coverage](Test-Coverage.md) to learn more.
 
 ---
 
-Resources:
+## 6. Tips and Tricks
 
-- https://testing-library.com/docs/
-- https://testing-library.com/docs/learning
-
+Visit the [Tips and Tricks section](./Tips-Tricks.md) for more detail
