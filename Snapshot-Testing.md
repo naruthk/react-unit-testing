@@ -25,7 +25,7 @@ describe('Rendering:', () => {
 });
 ```
 
-2. Run the test. Jest will create a snapshot file with the following output:
+2. Run the test. Jest will then create a snapshot file with the following output:
 
 ```snap
 exports[`Link renders correctly 1`] = `
@@ -39,6 +39,7 @@ exports[`Link renders correctly 1`] = `
 `;
 ```
 
+The snapshot file is stored inside the `__snapshots__` folder next to the test file.
 
 ## Inline Snapshots
 
@@ -49,16 +50,16 @@ This is done via the method: `toMatchInlineSnapshot()`.
 ```javascript
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Link page="https://prettier.io">Prettier</Link>)
+    .create(<Link page="https://google.com">Google</Link>)
     .toJSON();
   expect(tree).toMatchInlineSnapshot(`
 <a
   className="normal"
-  href="https://prettier.io"
+  href="https://google.com"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  Prettier
+  Google
 </a>
 `);
 });
@@ -66,17 +67,21 @@ it('renders correctly', () => {
 
 ## Updating Snapshots
 
-Only do this if the changes in the UI is expected. 
+Let's say we change the page props from `https://google.com` to `https://tesla.com`. Snapshot will output an error the next time you run your test.
+
+If the error is expected (the user interface/requirements need to be changed), then run the following command:
 
 ```bash
 jest --updateSnapshot
 ```
 
-Can be shortened as
+The command can also be shortened into
 
 ```bash
 jest --u
 ```
+
+This will output an updated Snapshot that matches the current code. Remember to commit the changes.
 
 ---
 
