@@ -110,7 +110,7 @@ test("spyOn", () => {
 
 ## Additional Readings
 
-- [Mocking is a code smell](https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a) by Eric Elliott
+It's not always that mocking is useful. Eric Elliott discusses this in the article [Mocking is a code smell](https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a).
 
 ---
 
