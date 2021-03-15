@@ -241,18 +241,18 @@ npm run jest --watchAll
 ## 5. Advanced Concepts
 ### Snapshot Testing
 
-Refer to the [guide on Snapshot Testing](Snapshot-Testing.md) to learn more.
+Refer to the [guide on Snapshot Testing](docs/Snapshot-Testing.md) to learn more.
 
 ### Mocking
 
-Refer to the [guide on Mocks](Mocks.md) to learn more.
+Refer to the [guide on Mocks](docs/Mocks.md) to learn more.
 
 ### Test Coverage
 
-Refer to the [guide on Test Coverage](Test-Coverage.md) to learn more.
+Refer to the [guide on Test Coverage](docs/Test-Coverage.md) to learn more.
 
 ---
 
 ## 6. Tips and Tricks
 
-Visit the [Tips and Tricks section](Tips-Tricks.md) for more detail.
+Visit the [Tips and Tricks section](docs/Tips-Tricks.md) for more detail.
