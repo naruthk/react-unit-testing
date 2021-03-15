@@ -1,6 +1,8 @@
 # Tips and Tricks
 
-You may find this library helpful when it comes to linting your Jest test files: [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)
+> You may find this library helpful when it comes to linting your Jest test files: [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)
+
+---
 
 1. Better to use pure functions instead of classes.
 2. Don't try to mix logic with the rendering UI. It makes it even harder to break them down and unit test them.
@@ -30,6 +32,8 @@ beforeEach(() => {
   jest.spyOn(Math, 'random').mockReturnValue(1.5);
 });
 ```
+
+8. It's not always necessary to aim for 100% code coverage. It does not mean the application is bug-free even though it is fully covered by unit test!
 
 ---
 
