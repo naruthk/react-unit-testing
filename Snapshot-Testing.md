@@ -2,6 +2,8 @@
 
 [Snapshot Testing](https://jestjs.io/docs/snapshot-testing)
 - makes sure that the user interface does not change unexpectedly
+- useful for capturing a component's rendered output
+- verify the HTML output is as expected
 - **should be committed**
 - **should be reviewed as part of code review process**
 
@@ -85,7 +87,7 @@ This will output an updated Snapshot that matches the current code. Remember to 
 
 ---
 
-Resources:
+**Sources:**
 
 - https://jestjs.io/blog/2020/01/21/jest-25
 - https://jestjs.io/docs/snapshot-testing
