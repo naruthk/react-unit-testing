@@ -7,7 +7,9 @@
 
 ---
 
-## Implementation
+## Matching Snapshots
+
+This is the general use case for snapshot testing.
 
 1. Write the test file
 
@@ -40,11 +42,9 @@ exports[`Link renders correctly 1`] = `
 
 ## Inline Snapshots
 
-```
-toMatchInlineSnapshot()
-```
-
 The expected output is written directly into the code. So you don't need to refer to an external snapshot file for debugging.
+
+This is done via the method: `toMatchInlineSnapshot()`.
 
 ```javascript
 it('renders correctly', () => {
@@ -66,6 +66,8 @@ it('renders correctly', () => {
 
 ## Updating Snapshots
 
+Only do this if the changes in the UI is expected. 
+
 ```bash
 jest --updateSnapshot
 ```
@@ -76,3 +78,9 @@ Can be shortened as
 jest --u
 ```
 
+---
+
+Resources:
+
+- https://jestjs.io/blog/2020/01/21/jest-25
+- https://jestjs.io/docs/snapshot-testing

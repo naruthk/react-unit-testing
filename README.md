@@ -226,15 +226,21 @@ describe("CustomButton:", () => {
 ## 4. Advanced Concepts
 ### Snapshot Testing
 
+Makes sure that the user interface does not change unexpectedly
+
 Refer to the [guide on Snapshot Testing](Snapshot-Testing.md) to learn more.
 
 ### Mocking
 
-Sometimes, you want to avoid impl
-
-https://jestjs.io/docs/manual-mocks
-
-https://jestjs.io/docs/jest-object#jestrequireactualmodulename
+Refer to the [guide on Mocks](Mocks.md) to learn more.
 
 ### Firing Events (Simulations)
+
+
+---
+
+Resources:
+
+- https://testing-library.com/docs/
+- https://testing-library.com/docs/learning
 
