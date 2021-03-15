@@ -30,6 +30,13 @@
 npm install --save-dev @testing-library/react testing-library/jest-dom babel-jest
 ```
 
+**Optional:** If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
+- [identity-obj-proxy](https://github.com/keyz/identity-obj-proxy): Mock CSS modules (useful for snapshot testing)
+
+```bash
+npm install --save-dev identity-obj-proxy
+```
+
 ### Configuring Jest
 
 1. Create a file called `setupTests.js` at the project root. The code inside `setupTests.js` is used globally.
@@ -54,12 +61,44 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   }
 };
 ```
 
-4. Add the following to your `package.json` file
+4. If you are using CSS modules, then also include the following as a property of `transform`. Otherwise, skip to #5.
+
+```javascript
+  ...
+  transform: {
+    ...,
+    "\\.(css|less|scss|sass)$': '<rootDir>/node_modules/identity-obj-proxy"
+  },
+  ...
+```
+
+5. For static assets (stylesheets and images), they are not really useful for testing purposes. So we mock them out via `fileMock.js` and `styleMock.js`.
+
+```javascript
+  ...
+  transform: {
+    ...,
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+  },
+  ...
+```
+
+```javascript
+// __mocks__/styleMock.js
+module.exports = {};
+```
+
+```javascript
+// __mocks__/fileMock.js
+module.exports = 'test-file-stub';
+```
+
+1. Finally, add the following to `package.json` file
 
 ```json
 {
@@ -187,18 +226,11 @@ describe("CustomButton:", () => {
 ## 4. Advanced Concepts
 ### Snapshot Testing
 
-[Snapshot Testing](https://jestjs.io/docs/snapshot-testing) makes sure that the user interface does not change unexpectedly.
-
-```javascript
-describe('Rendering:', () => {
- it('should render the component with default props', () => {
-   const { container } = render(<YourComponent {...withWhateverProps} />)
-   expect(container).toMatchSnapshot();
- });
-});
-```
+Refer to the [guide on Snapshot Testing](Snapshot-Testing.md) to learn more.
 
 ### Mocking
+
+Sometimes, you want to avoid impl
 
 https://jestjs.io/docs/manual-mocks
 
