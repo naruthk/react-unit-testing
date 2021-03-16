@@ -27,11 +27,15 @@
 
 3. [babel-jest](https://www.npmjs.com/package/babel-jest): Transform our test code with Babel
 
+4. [jest](https://jestjs.io/): JavaScript testing framework
+
 ```bash
-npm install --save-dev @testing-library/react testing-library/jest-dom babel-jest
+npm install --save-dev @testing-library/react testing-library/jest-dom babel-jest jest
 ```
 
-**(3A) Optional:** If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
+#### 1A: Optional
+
+If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
 - [identity-obj-proxy](https://github.com/keyz/identity-obj-proxy): Mock CSS modules (useful for snapshot testing)
 
 ```bash
@@ -66,7 +70,7 @@ module.exports = {
 };
 ```
 
-4. If you are using CSS modules (see section 3A above), then also include the following as a property of `transform`. Otherwise, skip to #5.
+4. If you are using CSS modules (see section 1A above), then also include the following as a property of `transform`. Otherwise, skip to #5.
 
 ```javascript
   ...
@@ -77,7 +81,7 @@ module.exports = {
   ...
 ```
 
-5. For static assets (stylesheets and images), they are not really useful for testing purposes. So we mock them out via `fileMock.js` and `styleMock.js`.
+5. For static assets (stylesheets and images), they are not really useful for testing purposes. So we mock out files and images in `fileMock.js` and stylesheets in `styleMock.js`.
 
 ```javascript
   ...
