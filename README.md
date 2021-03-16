@@ -20,17 +20,17 @@
 ### Install the following packages:
 
 1. [testing-library/react](https://github.com/testing-library/react-testing-library): React DOM testing utilities
-
-2. [testing-library/jest-dom](https://github.com/testing-library/jest-dom): A set of custom Jest matchers to aid with testing
+2. [testing-library/dom](https://testing-library.com/docs/dom-testing-library/intro): Test DOM nodes 
+3. [testing-library/jest-dom](https://github.com/testing-library/jest-dom): A set of custom Jest matchers to aid with testing
    - i.e. `toBeVisible()`,
    - `toBeInTheDocument()`
-
-3. [babel-jest](https://www.npmjs.com/package/babel-jest): Transform our test code with Babel
-
 4. [jest](https://jestjs.io/): JavaScript testing framework
+5. [babel-jest](https://www.npmjs.com/package/babel-jest): Transform our test code with Babel
+6. [@babel/preset-env](https://www.npmjs.com/package/babel-preset-env): Transformation for latest JavaScript syntax without needing polyfills
+7. [@babel/preset-react](https://www.npmjs.com/package/babel-preset-react): Transformation  support for React JSX syntax
 
 ```bash
-npm install --save-dev @testing-library/react testing-library/jest-dom babel-jest jest
+npm install --save-dev @testing-library/dom @testing-library/react testing-library/jest-dom babel-jest jest
 ```
 
 #### 1A: Optional
@@ -42,28 +42,30 @@ If you are using [CSS Modules](https://github.com/css-modules/css-modules) for s
 npm install --save-dev identity-obj-proxy
 ```
 
-### Configuring Jest
+## 2. Configuring Jest
 
-1. Create a file called `setupTests.js` at the project root. The code inside `setupTests.js` is used globally.
+1. Create a file called `jest.setup.js` at the project root. The code inside `jest.setup.js` is used globally.
 
 ```javascript
+// jest.setup.js
 import "@testing-library/jest-dom/extend-expect";
 ```
 
-2. Create a file called `.babelrc` at the project root. [next/babel](https://nextjs.org/docs/advanced-features/customizing-babel-config) helps compile React applications and server-side code.
+1. Create a file called `babel.config.js` at the project root.
 
 ```json
-{
-  "presets": ["next/babel"]
+module.exports = {
+  "presets": ["@babel/preset-react", "@babel/preset-env"]
 }
 ```
 
-3. Create a `jest.config.js` file in the root directory
+1. Create a `jest.config.js` file in the root directory
    
 ```javascript
+// jest.config.js
 module.exports = {
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
-  setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   }
@@ -73,6 +75,7 @@ module.exports = {
 4. If you are using CSS modules (see section 1A above), then also include the following as a property of `transform`. Otherwise, skip to #5.
 
 ```javascript
+// jest.config.js
   ...
   transform: {
     ...,
@@ -84,6 +87,7 @@ module.exports = {
 5. For static assets (stylesheets and images), they are not really useful for testing purposes. So we mock out files and images in `fileMock.js` and stylesheets in `styleMock.js`.
 
 ```javascript
+// jest.config.js
   ...
   transform: {
     ...,
@@ -115,7 +119,7 @@ module.exports = 'test-file-stub';
 
 ---
 
-## 2. Basic Concept of Jest
+## 3. Basic Concept of Jest
 
 This section is based on the [documentation provided on Jest's official documentation website](https://jestjs.io/docs/getting-started).
 
@@ -147,7 +151,7 @@ PASS  ./sum.test.js
 
 ---
 
-## 3. Basic Concept of React Testing Library
+## 4. Basic Concept of React Testing Library
 
 **Consider the following React component:**
 
@@ -278,7 +282,7 @@ You can look up HTML elements and their given roles [here](https://www.w3.org/TR
 
 ---
 
-## 4. Running Tests
+## 5. Running Tests
 
 Run all test files using the following command:
 
@@ -294,7 +298,7 @@ npm run jest --watchAll
 
 ---
 
-## 5. Advanced Concepts
+## 6. Advanced Concepts
 ### Snapshot Testing
 
 Refer to the [guide on Snapshot Testing](docs/Snapshot-Testing.md) to learn more.
@@ -309,12 +313,12 @@ Refer to the [guide on Test Coverage](docs/Test-Coverage.md) to learn more.
 
 ---
 
-## 6. Tips and Tricks
+## 7. Tips and Tricks
 
 Visit the [Tips and Tricks section](docs/Tips-Tricks.md) for more detail.
 
 ---
 
-## 7. Weird Issues You Might Encounter
+## 8. Issues You Might Encounter
 
 Commonly found [issues](Issues.md) worth exploring.
