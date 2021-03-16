@@ -40,6 +40,8 @@ If you are using [CSS Modules](https://github.com/css-modules/css-modules) for s
 npm install --save-dev identity-obj-proxy
 ```
 
+---
+
 ## 2. Configuring Jest
 
 1. Create a file called `jest.setup.js` at the project root.
