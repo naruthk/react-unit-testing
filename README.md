@@ -312,3 +312,9 @@ Refer to the [guide on Test Coverage](docs/Test-Coverage.md) to learn more.
 ## 6. Tips and Tricks
 
 Visit the [Tips and Tricks section](docs/Tips-Tricks.md) for more detail.
+
+---
+
+## 7. Weird Issues You Might Encounter
+
+Commonly found [issues](Issues.md) worth exploring.
