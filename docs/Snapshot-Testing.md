@@ -86,6 +86,18 @@ This will output an updated Snapshot that matches the current code. Remember to 
 
 ---
 
+## Notes:
+
+If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
+
+```bash
+npm install --save-dev identity-obj-proxy
+```
+
+The **identity-obj-proxy** package will mock CSS modules that are used by the component you are testing.
+
+---
+
 **Sources:**
 
 - https://jestjs.io/blog/2020/01/21/jest-25
