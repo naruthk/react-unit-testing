@@ -21,9 +21,7 @@
 
 1. [testing-library/react](https://github.com/testing-library/react-testing-library): React DOM testing utilities
 2. [testing-library/dom](https://testing-library.com/docs/dom-testing-library/intro): Test DOM nodes 
-3. [testing-library/jest-dom](https://github.com/testing-library/jest-dom): A set of custom Jest matchers to aid with testing
-   - i.e. `toBeVisible()`,
-   - `toBeInTheDocument()`
+3. [testing-library/jest-dom](https://github.com/testing-library/jest-dom): A set of custom Jest matchers to aid with testing (i.e. `toBeVisible()`, `toBeInTheDocument()`)
 4. [jest](https://jestjs.io/): JavaScript testing framework
 5. [babel-jest](https://www.npmjs.com/package/babel-jest): Transform our test code with Babel
 6. [@babel/preset-env](https://www.npmjs.com/package/babel-preset-env): Transformation for latest JavaScript syntax without needing polyfills
@@ -44,23 +42,20 @@ npm install --save-dev identity-obj-proxy
 
 ## 2. Configuring Jest
 
-1. Create a file called `jest.setup.js` at the project root. The code inside `jest.setup.js` is used globally.
-
+1. Create a file called `jest.setup.js` at the project root.
 ```javascript
 // jest.setup.js
 import "@testing-library/jest-dom/extend-expect";
 ```
 
-1. Create a file called `babel.config.js` at the project root.
-
+2. Create a file called `babel.config.js` at the project root.
 ```json
 module.exports = {
   "presets": ["@babel/preset-react", "@babel/preset-env"]
 }
 ```
 
-1. Create a `jest.config.js` file in the root directory
-   
+3. Create a `jest.config.js` file in the root directory
 ```javascript
 // jest.config.js
 module.exports = {
@@ -72,41 +67,37 @@ module.exports = {
 };
 ```
 
-4. If you are using CSS modules (see section 1A above), then also include the following as a property of `transform`. Otherwise, skip to #5.
-
-```javascript
-// jest.config.js
-  ...
+4. We also need to mock stylesheets:
+- If you are using CSS modules (see section 1A above), then include the following as a property of `transform`. This will attach your classnames in the rendered output (which is really useful for snapshot testing).
+  ```javascript
+  // jest.config.js
   transform: {
-    ...,
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
-  ...
-```
-
-5. For static assets (stylesheets and images), they are not really useful for testing purposes. So we mock out files and images in `fileMock.js` and stylesheets in `styleMock.js`.
-
-```javascript
-// jest.config.js
-  ...
+  ```
+- On the other hand, if you use ordinary stylesheets (.scss, .css, .less), then we can simply mock them out.
+  ```javascript
+  // jest.config.js
   transform: {
-    ...,
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
   },
-  ...
-```
-
+  ```
+  ```javascript
+  // __mocks__/styleMock.js
+  module.exports = {};
+  ```
+5. Files are also unnecessary during our tests. So we also exclude them by mocking them out.
 ```javascript
-// __mocks__/styleMock.js
-module.exports = {};
+// jest.config.js
+transform: {
+  "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+},
 ```
 
 ```javascript
 // __mocks__/fileMock.js
 module.exports = 'test-file-stub';
 ```
-
 6. Finally, add the following to `package.json` file
 
 ```json
