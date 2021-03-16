@@ -151,7 +151,7 @@ PASS  ./sum.test.js
 import React from "react";
 import PropTypes from "prop-types";
 
-const CustomButton = ({ primaryButton, secondaryButton }) => (
+const CustomButtonsArea = ({ primaryButton, secondaryButton }) => (
   <div>
     {primaryButton ? (
       <input
@@ -174,23 +174,23 @@ const CustomButton = ({ primaryButton, secondaryButton }) => (
   </div>
 );
 
-export default CustomButton;
+export default CustomButtonsArea;
 ```
 
-**Here's how an example test file `CustomButton.test.js` might be written as:**
+**Here's how an example test file `CustomButtonsArea.test.js` might be written as:**
 
 ```jsx
 import { render } from "@testing-library/react";
 import React from "react";
 
-import CustomButton from "./CustomButton";
+import CustomButtonsArea from "./CustomButtonsArea";
 
-describe("CustomButton:", () => {
+describe("CustomButtonsArea:", () => {
   it("renders primary and secondary buttons", async () => {
 
     // https://testing-library.com/docs/react-testing-library/api#render
     const { getByDisplayValue, getAllByRole, getByTestId } = render(
-      <CustomButton
+      <CustomButtonsArea
         primaryButton={{
           value: "Agree",
           onClick: () => {}
@@ -218,9 +218,61 @@ describe("CustomButton:", () => {
 });
 ```
 
+**Let's dive into each function:**
+
+### `getByDisplayValue`
+
+In this example, we're expecting to find the value `Sam` in the rendered DOM.
+
+```html
+// Sample HTML
+<input type="text" id="lastName" value="Sam" />
+```
+
+```javascript
+expect(getByDisplayValue(/Sam/)).toBeInTheDocument();
+```
+
+[See official documentation](https://testing-library.com/docs/queries/bydisplayvalue)
+
+### `getAllByRole`
+
+It returns multiple elements with the given role. To find and return a single value, use `getByRole`.
+
+Based on the example component `CustomButtonsArea`:
+
+```javascript
+expect(getAllByRole("button")).toHaveLength(2); // Passes because 2 buttons are rendered (primary and secondary buttons)
+```
+
+You can also utilize some nice JavaScript functions like so:
+
+```javascript
+const buttons = getAllByRole("button");
+
+expect(buttons).toHaveLength(2); // passes!
+
+buttons.forEach(button => {
+  expect(button).toHaveDisplayValue(); // passes!
+});
+```
+
+You can look up HTML elements and their given roles [here](https://www.w3.org/TR/html-aria/#docconformance). For instance, the `a` HTML element with `href` attribute has a `link` role.
+
+[See official documentation](https://testing-library.com/docs/queries/byrole)
+
+
+### `getByTestId`
+
+
+
 **Note:** `getByTestId` is not something that is truly recommended. Based on the principles of Testing Library, we are testing how our applications work the way the user sees them.
 
 `data-testid` attributes do not resemble how your software is used.
+
+[See official documentation](https://testing-library.com/docs/queries/bytestid)
+
+---
 
 ## 4. Running Tests
 
