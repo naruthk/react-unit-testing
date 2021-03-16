@@ -31,7 +31,7 @@
 npm install --save-dev @testing-library/react testing-library/jest-dom babel-jest
 ```
 
-**Optional:** If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
+**(3A) Optional:** If you are using [CSS Modules](https://github.com/css-modules/css-modules) for styling, then also install the following:
 - [identity-obj-proxy](https://github.com/keyz/identity-obj-proxy): Mock CSS modules (useful for snapshot testing)
 
 ```bash
@@ -61,18 +61,18 @@ module.exports = {
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   }
 };
 ```
 
-4. If you are using CSS modules, then also include the following as a property of `transform`. Otherwise, skip to #5.
+4. If you are using CSS modules (see section 3A above), then also include the following as a property of `transform`. Otherwise, skip to #5.
 
 ```javascript
   ...
   transform: {
     ...,
-    "\\.(css|less|scss|sass)$": "<rootDir>/node_modules/identity-obj-proxy"
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
   ...
 ```
