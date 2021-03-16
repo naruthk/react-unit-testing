@@ -181,7 +181,7 @@ const CustomButtonsArea = ({ primaryButton, secondaryButton }) => (
 export default CustomButtonsArea;
 ```
 
-**Here's how an example test file `CustomButtonsArea.test.js` might be written as:**
+**An example test file `CustomButtonsArea.test.js` for the component above:**
 
 ```jsx
 import { render } from "@testing-library/react";
