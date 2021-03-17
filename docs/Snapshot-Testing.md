@@ -50,9 +50,9 @@ This is done via the method: `toMatchInlineSnapshot()`.
 
 ```javascript
 it('renders correctly', () => {
-  const tree = renderer
-    .create(<Link page="https://google.com">Google</Link>)
-    .toJSON();
+  const { container } = render(
+    <Link page="https://google.com">Google</Link>
+  );
   expect(tree).toMatchInlineSnapshot(`
 <a
   className="normal"
