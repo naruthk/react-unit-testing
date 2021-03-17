@@ -53,7 +53,7 @@ it('renders correctly', () => {
   const { container } = render(
     <Link page="https://google.com">Google</Link>
   );
-  expect(tree).toMatchInlineSnapshot(`
+  expect(container).toMatchInlineSnapshot(`
 <a
   className="normal"
   href="https://google.com"
