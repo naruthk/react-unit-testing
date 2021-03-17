@@ -37,6 +37,29 @@ beforeEach(() => {
 
 ---
 
+## Optional: Pre-Commit Hook
+
+[**Husky**](https://github.com/typicode/husky): a library to help improve your commits
+
+This can be very useful because you can do a pre-commit hook to make sure that the new code you add pass the expected coverage percentage that you set before it can be commited.
+
+```bash
+npm install husky --save-dev
+```
+
+```
+// package.json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  }
+}
+```
+
+---
+
 **Sources:**
 
 - https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a

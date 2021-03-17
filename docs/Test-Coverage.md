@@ -127,29 +127,6 @@ The test will fail if all branches, functions, lines, and statements are not 100
 
 ---
 
-## Optional: Pre-Commit Hook
-
-[**Husky**](https://github.com/typicode/husky): a library to help improve your commits
-
-This can be very useful because you can do a pre-commit hook to make sure that the new code you add pass the expected coverage percentage that you set before it can be commited.
-
-```bash
-npm install husky --save-dev
-```
-
-```
-// package.json
-{
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm test"
-    }
-  }
-}
-```
-
----
-
 **Sources:**
 
 - https://jestjs.io/docs/cli#--coverageboolean
