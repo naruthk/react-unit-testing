@@ -28,7 +28,7 @@
 7. [@babel/preset-react](https://www.npmjs.com/package/babel-preset-react): Transformation  support for React JSX syntax
 
 ```bash
-npm install --save-dev @testing-library/dom @testing-library/react testing-library/jest-dom babel-jest jest
+npm install --save-dev @testing-library/dom @testing-library/react testing-library/jest-dom babel-jest jest @babel/preset-env @babel/preset-react
 ```
 
 #### 1A: Optional
