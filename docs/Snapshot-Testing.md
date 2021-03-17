@@ -16,6 +16,10 @@ This is the general use case for snapshot testing.
 1. Write the test file
 
 ```javascript
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Link from '../Link.react'; // https://github.com/facebook/jest/blob/master/examples/snapshot/Link.react.js
+
 describe('Rendering:', () => {
  it('should render the component with default props', () => {
     const { container } = render(
@@ -49,6 +53,10 @@ The expected output is written directly into the code. So you don't need to refe
 This is done via the method: `toMatchInlineSnapshot()`.
 
 ```javascript
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Link from '../Link.react'; // https://github.com/facebook/jest/blob/master/examples/snapshot/Link.react.js
+
 it('renders correctly', () => {
   const { container } = render(
     <Link page="https://google.com">Google</Link>
