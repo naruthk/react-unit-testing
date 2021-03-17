@@ -17,7 +17,7 @@ This is the general use case for snapshot testing.
 
 ```javascript
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import Link from '../Link.react'; // https://github.com/facebook/jest/blob/master/examples/snapshot/Link.react.js
 
 describe('Rendering:', () => {
@@ -54,7 +54,7 @@ This is done via the method: `toMatchInlineSnapshot()`.
 
 ```javascript
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import Link from '../Link.react'; // https://github.com/facebook/jest/blob/master/examples/snapshot/Link.react.js
 
 it('renders correctly', () => {
